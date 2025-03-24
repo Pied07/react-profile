@@ -1,0 +1,186 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.glow {
+  position: fixed;
+  width: 1000px;
+  height: 1000px;
+  background: radial-gradient(yellow,red, transparent, transparent);
+  border-radius: 50%;
+  transform: translate(-50%,-50%);
+  opacity: 0;
+  overflow: hidden;
+}
+
+/* Navigation Bar CSS */
+
+.navigationBar {
+  position: fixed;
+  top: 0;
+  background-color: rgb(4, 4, 100);
+  width: 100%;
+  left: 0;
+  ul {
+    display: flex;
+    list-style-type: none;
+    justify-content: end;
+    li {
+      margin: 0 10px;
+    }
+  }
+}
+
+.navText {
+  position: relative;
+  color: white;
+  transition: all 1s ease;
+}
+.navText:hover {
+  color: yellow;
+}
+
+.active {
+  color: yellow;
+}
+
+.navText::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background-color: yellow;
+  transition: width 0.5s ease-in-out;
+}
+
+.navText:hover::after {
+  width: 100%;
+}
+
+/* Home CSS */
+
+.homeElements {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 80px;
+}
+
+.homeLeft {
+  text-align: left;
+  span, h3 {
+    color: red;
+  }
+}
+
+.myImage {
+  width: 350px;
+  height: 400px;
+  display: block;
+}
+
+.contactContainer {
+  padding: 20px;
+  place-items: center;
+  h1 {
+    color: yellow;
+    text-decoration: underline;
+  }
+}
+
+.contactItems {
+  padding: 20px;
+  border-radius: 8px;
+  color: black;
+  margin: 10px;
+  width: fit-content;
+}
+
+.cardContainer {
+  background-color: white;
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  padding: 20px;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardElement {
+  width: 100%;
+}
+
+.contactFormContainer {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  h2 {
+    text-decoration: underline;
+    color: black;
+  }
+}
+
+.contactForm {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  gap: 10px;
+  input {
+    min-width: 500px;
+    min-height: 50px;
+    background-color: whitesmoke;
+    border-radius: 8px;
+    border: 1px solid black;
+  }
+  textarea {
+    width: 500px;
+    height: 300px;
+    background-color: whitesmoke;
+    border-radius: 8px;
+    border: 1px solid black;
+  }
+}
