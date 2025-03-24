@@ -18,12 +18,15 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%; /* Start at the left */
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    background-position: 100% 50%; /* Move to the right */
+  }
+  100% {
+    background-position: 0% 50%; /* Reset to start */
   }
 }
 
@@ -61,6 +64,9 @@
   background-color: rgb(4, 4, 100);
   width: 100%;
   left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   ul {
     display: flex;
     list-style-type: none;
@@ -69,6 +75,14 @@
       margin: 0 10px;
     }
   }
+}
+
+.navLeft, .navRight {
+  margin: 0 20px;
+}
+
+.navLeft h2 {
+  text-transform: capitalize;
 }
 
 .navText {
@@ -156,6 +170,67 @@
   top: auto;
 }
 
+/* Projects CSS */
+
+.projectContainer {
+  margin-top: 100px;
+  h1 {
+    color: red;
+    text-decoration: underline;
+  }
+}
+
+.projectCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.ProjectCardContainer {
+  background: linear-gradient(to bottom right, red, yellow, purple);
+  background-size: 200% 100%;
+  cursor: pointer;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease-in-out;
+  p {
+    color: black;
+  }
+  h2 {
+    color: black;
+    text-transform: capitalize;
+  }
+}
+
+.ProjectCardContainer:hover {
+  background-position: 100% 0;
+  box-shadow: 0 0 15px red, 0 0 30px yellow;
+}
+
+.ProjectcardActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  top: auto;
+  a {
+    background-color: rgb(184, 184, 184);
+    border-radius: 8px;
+    border: 1px solid coral;
+    color: red;
+    padding: 0 2px;
+    transition: all 0.2s ease-in-out;
+  }
+  a:hover {
+    color: blue;
+    border-color: blueviolet;
+    box-shadow: 0 0 15px red;
+  }
+}
+
 .contactContainer {
   padding: 20px;
   place-items: center;
@@ -219,4 +294,55 @@
     border-radius: 8px;
     border: 1px solid black;
   }
+}
+
+/* Modal CSS */
+.modal {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.2);
+  backdrop-filter: blur(8px);
+}
+
+.modalContent {
+  position: relative;
+  background-color: azure;
+  color: black;
+  padding: 40px;
+  border-radius: 20px;
+}
+
+.modalContent::before{
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: calc(100% + 6px);
+  height: calc(100% + 6px); 
+  border-radius: 20px;
+  background: linear-gradient(to bottom right, red, yellow, blue, indigo,crimson, purple, magenta, green);
+  box-shadow: 0 0 30px red, 0 0 50px yellow , 0 0 80px purple, 0 0 120px indigo;
+  background-size: 300% 300%;
+  z-index: -1;
+  animation: gradientAnimation 3s linear infinite;
+}
+
+.modalActions {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
+
+.closeIcon {
+  width: 30px;
+  height: 30px;
+  color: red;
+  cursor: pointer;
 }

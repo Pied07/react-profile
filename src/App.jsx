@@ -6,6 +6,7 @@ import Home from './components/Home/Home'
 import About from './components/About/About'
 import NavigationBar from './components/NavigationBar/NavigationBar'
 import Contacts from './components/Contacts/Contacts'
+import Projects from './components/Projects/Projects'
 import './App.css'
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <NavigationBar />
           <Routes>
             <Route path='/' element={<Home />} />
+            <Route path='/projects' element={<Projects />} />
             <Route path='/about' element={<About />} />
             <Route path='/contacts' element={<Contacts />} />
           </Routes>
