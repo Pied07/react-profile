@@ -12,7 +12,6 @@ function App() {
   const [position, setPosition] = useState({ x: 0, y: 0 })
 
   const handleMouseMove = (e) => {
-    console.log("entered Use State")
     setPosition({
       x: e.clientX,
       y: e.clientY
@@ -30,7 +29,7 @@ function App() {
   return (
     <>
       <div className="glow" style={{ left: `${position.x}px`, top: `${position.y}px`}}></div>
-      <Router>
+      <Router basename='/react-profile/'>
         <div>
           <NavigationBar />
           <Routes>

@@ -50,6 +50,7 @@
   transform: translate(-50%,-50%);
   opacity: 0;
   overflow: hidden;
+  z-index: -1;
 }
 
 /* Navigation Bar CSS */
@@ -118,6 +119,41 @@
   width: 350px;
   height: 400px;
   display: block;
+}
+
+.homeCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.homeRecentProjects h1 {
+  color: red;
+  text-decoration: underline;
+}
+
+.homeProjectCardContainer {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  p {
+    color: black;
+  }
+  h2 {
+    color: black;
+    text-transform: capitalize;
+  }
+}
+
+.homeProjectcardActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  top: auto;
 }
 
 .contactContainer {

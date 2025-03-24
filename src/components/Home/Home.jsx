@@ -14,7 +14,13 @@ function Home() {
     const fetchRepos = async () => {
       try {
         const response = await axios.get(`https://api.github.com/users/${username}/repos`);
-        setRepos(response.data);
+        const sortedResponse = response.data.sort(
+          (a,b) => new Date(b.pushed_at) - new Date(a.pushed_at)
+
+        )
+        .slice(0,5)
+        setRepos(sortedResponse);
+        console.log(sortedResponse)
         setLoading(false);
       } catch (err) {
         setError('Error fetching data');
@@ -33,21 +39,25 @@ function Home() {
                 <p>I am a passionate and skilled software developer with experience in building efficient and scalable solutions. With expertise in languages like JavaScript, Python, PHP, JAVA and SQL. I am well-versed in frameworks like React, Node.js, and Django, Laravel and I pride myself on writing clean, maintainable code. Continuously learning and adapting to new technologies, I enjoy tackling challenging problems and collaborating with teams to create impactful, user-centric applications. In my free time, I stay engaged with the tech community through Tech podcasts and Tech Articles.</p>
               </div>
               <div className="homeRight">
-                <img className='myImage' src={sandipan} alt="My Pic" />
+                {/* <img className='myImage' src={sandipan} alt="My Pic" /> */}
               </div>
             </div>
             <div className="homeRecentProjects">
               <h1>Some of my Recent Projects</h1>
-                <ul>
+                  <div className="homeCards">
                   {repos.map((repo) => (
-                    <li key={repo.id}>
-                      <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
-                        {repo.name}
-                      </a>
+                    <div className='homeProjectCardContainer' key={repo.id}>
+                      <h2>{repo.name.replace(/[-_]/g, " ")}</h2>
                       <p>{repo.description}</p>
-                    </li>
+                      <div className="homeProjectcardActions">
+                        <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
+                          Visit Repository
+                        </a>
+                        <a href={`https://api.github.com/users/${username}`/repo.name}>Visit Website</a>
+                      </div>
+                    </div>
                   ))}
-                </ul>
+                  </div>
             </div>
         </div>
     </>
