@@ -53,7 +53,7 @@ function Home() {
                         <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
                           Visit Repository
                         </a>
-                        <a href={`https://api.github.com/users/${username}`/repo.name}>Visit Website</a>
+                        <a href={`https://${username}.github.io/${repo.name}/`} target='_blank' rel='noopener noreferrer'>Visit Website</a>
                       </div>
                     </div>
                   ))}
