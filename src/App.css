@@ -147,20 +147,35 @@
 }
 
 .homeProjectCardContainer {
-  background-color: white;
+  background-color: rgb(236, 255, 255);
   padding: 20px;
   border-radius: 8px;
   text-align: left;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: all 0.3s ease-in-out;
   p {
     color: black;
   }
   h2 {
-    color: black;
+    color: rgb(105, 2, 2);
     text-transform: capitalize;
   }
+  a {
+    color: rgb(1, 1, 51);
+    background-color: beige;
+    padding: 3px;
+    border-radius: 5px;
+    border: 1px solid rgb(1,1,51);
+    transition: all 0.3s ease-in-out;
+  }
+  a:hover {
+    background-color: yellow;
+  }
+}
+.homeProjectCardContainer:hover {
+  box-shadow: -10px 10px 20px yellow;
 }
 
 .homeProjectcardActions {
@@ -168,6 +183,22 @@
   justify-content: space-between;
   align-items: end;
   top: auto;
+}
+
+.projectButton {
+  padding: 5px 10px;
+  background-color: transparent;
+  color: yellow;
+  border-image: linear-gradient(45deg, red,yellow,blue,orange, magenta,purple,green);
+  border-image-slice: 1;
+  border-image-width: 2px;
+  box-shadow: 0 0 15px yellow, 0 0 30px red;
+  transition: all 0.5s ease-in-out;
+}
+
+.projectButton:hover {
+  box-shadow: 0 0 30px yellow, 0 0 60px red;
+  color: aqua;
 }
 
 /* Projects CSS */
@@ -187,7 +218,7 @@
 }
 
 .ProjectCardContainer {
-  background: linear-gradient(to bottom right, red, yellow, purple);
+  background-color: rgb(219, 220, 255);
   background-size: 200% 100%;
   cursor: pointer;
   padding: 20px;

@@ -1,7 +1,9 @@
 import React from 'react'
 import axios from 'axios';
 import { useState,useEffect } from 'react';
+import { Link } from 'react-router-dom'
 import sandipan from '../../assets/sandipan.jpeg'
+import Leetcode from './Leetcode/leetcode';
 
 function Home() {
   const [repos, setRepos] = useState([]);
@@ -80,7 +82,7 @@ function Home() {
                       <p>{repo.description}</p>
                       <div className="homeProjectcardActions">
                         <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
-                          Visit Repository
+                          Repository
                         </a>
                         {siteAvailable[repo.name] && (
                           <a 
@@ -88,15 +90,22 @@ function Home() {
                             target='_blank' 
                             rel='noopener noreferrer'
                           >
-                            Visit Website
+                            Website
                           </a>
                         )}
                       </div>
                     </div>
                   ))}
                   </div>
+                  <br /><br />
+                    <Link className='projectButton' to="/projects">See All Projects</Link>
               </div>
-              <a href="">See All Projects</a>
+              <div className="homeLeetcodeContainer">
+                <h1>My LeetCode Progress</h1>
+                <div className="homeLeetcodeContains">
+                  <Leetcode />
+                </div>
+              </div>
           </div>
     </>
   )
