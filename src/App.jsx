@@ -30,7 +30,7 @@ function App() {
   return (
     <>
       <div className="glow" style={{ left: `${position.x}px`, top: `${position.y}px`}}></div>
-      <Router>
+      <Router basename='/react-profile/'>
         <div>
           <NavigationBar />
           <Routes>
