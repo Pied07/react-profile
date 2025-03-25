@@ -21,10 +21,10 @@ function NavigationBar() {
       </div>
         <div className="navRight">
         <ul>
-            <li><Link className={activeLink === 'home' ? 'navText active' : 'navText'} onClick={() => {handleActiveLink("home")}} to="/react-profile/">Home</Link></li>
-            <li><Link className={activeLink === 'projects' ? 'navText active' : 'navText'} onClick={() => {handleActiveLink("projects")}} to="/react-profile/projects">Projects</Link></li>
-            <li><Link className={activeLink === 'about' ? 'navText active' : 'navText'} onClick={() => {handleActiveLink("about")}} to="/react-profile/about">About</Link></li>
-            <li><Link className={activeLink === 'contacts' ? 'navText active' : 'navText'} onClick={() => {handleActiveLink("contacts")}} to="/react-profile/contacts">Contact</Link></li>
+            <li><Link className={activeLink === 'home' ? 'navText active' : 'navText'} to="/react-profile/">Home</Link></li>
+            <li><Link className={activeLink === 'projects' ? 'navText active' : 'navText'} to="/react-profile/projects">Projects</Link></li>
+            <li><Link className={activeLink === 'about' ? 'navText active' : 'navText'} to="/react-profile/about">About</Link></li>
+            <li><Link className={activeLink === 'contacts' ? 'navText active' : 'navText'} to="/react-profile/contacts">Contact</Link></li>
         </ul>
         </div>
     </nav>
