@@ -130,9 +130,18 @@
 }
 
 .myImage {
-  width: 350px;
+  width: 400px;
   height: 400px;
   display: block;
+  border-radius: 50%;
+  opacity: 0.5;
+  transition: all 0.5s ease-in-out;
+}
+
+.myImage:hover {
+  opacity: 1;
+  width: 420px;
+  height: 420px;
 }
 
 .homeCards {
@@ -175,7 +184,7 @@
   }
 }
 .homeProjectCardContainer:hover {
-  box-shadow: -10px 10px 20px yellow;
+  box-shadow: 0 0 15px red, 0 0 30px yellow;
 }
 
 .homeProjectcardActions {
@@ -188,10 +197,8 @@
 .projectButton {
   padding: 5px 10px;
   background-color: transparent;
-  color: yellow;
-  border-image: linear-gradient(45deg, red,yellow,blue,orange, magenta,purple,green);
-  border-image-slice: 1;
-  border-image-width: 2px;
+  color: #ffff00;
+  border: 1px solid aqua;
   box-shadow: 0 0 15px yellow, 0 0 30px red;
   transition: all 0.5s ease-in-out;
 }
@@ -201,19 +208,37 @@
   color: aqua;
 }
 
+.projectBtn {
+  padding: 5px 10px;
+  background-color: transparent;
+  color: #ffff00;
+  border: 1px solid aqua;
+  box-shadow: 0 0 15px yellow, 0 0 30px red;
+  transition: all 0.5s ease-in-out;
+}
 
+.projectBtn:hover {
+  box-shadow: 0 0 30px yellow, 0 0 60px red;
+  color: aqua;
+}
 
 /* Leetcode css */
+
+.LeetcodeContainer h1 {
+  color: red;
+  text-decoration: underline;
+}
 
 .chartsContains {
   display: flex;
   justify-content: space-between;
   align-items: start;
   padding: 0 40px;
+  flex-wrap: wrap;
 }
 
 .leetDoughnut {
-  width: 300px;
+  max-width: 300px;
   h2 {
     white-space: nowrap;
   }
@@ -221,6 +246,10 @@
 
 .leetBar {
   width: 600px;
+}
+
+.leetLine {
+  width: 100%;
 }
 
 .leetSubmission h1 {
@@ -232,8 +261,7 @@
   border: 1px solid yellow;
   padding: 20px;
   max-height: 350px;
-  overflow: scroll;
-  scrollbar-width: none;
+  overflow-y: scroll;
 }
 
 .leetRecentSubmission{

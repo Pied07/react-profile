@@ -99,6 +99,8 @@ function Projects() {
                     </div>
                 </div>
             )}
+            <br /><br />
+            <a href="https://github.com/Pied07" className='projectBtn'>Visit My Github Profile</a>
         </div>
     </>
   )
