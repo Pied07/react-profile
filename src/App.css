@@ -223,6 +223,45 @@
   width: 600px;
 }
 
+.leetSubmission h1 {
+  color: red;
+  text-decoration: underline;
+}
+
+.leetSubmissionsContains{
+  border: 1px solid yellow;
+  padding: 20px;
+  max-height: 350px;
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
+.leetRecentSubmission{
+  border: 1px solid red;
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.leetRecentSubmission:hover {
+  background-color: antiquewhite;
+  color: black;
+}
+
+.leetcodeBtn {
+  background-color: antiquewhite;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid aqua;
+  transition: all 0.3s ease-in-out;
+}
+
+.leetcodeBtn:hover {
+  box-shadow: 0 0 20px yellow, 0 0 40px red;
+}
+
 /* Projects CSS */
 
 .projectContainer {

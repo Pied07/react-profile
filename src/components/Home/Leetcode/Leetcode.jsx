@@ -9,6 +9,7 @@ ChartJS.register(ArcElement, Tooltip, Legend, BarElement, CategoryScale, LinearS
 function Leetcode() {
   const [code, setCode] = useState(null); // State for storing LeetCode data
   const [loading, setLoading] = useState(true); // Loading state for data fetch
+  const [recentSubmission, setRecentSubmission] = useState([])
 
   const username = 'Sandipan_Adhikary';
 
@@ -25,6 +26,12 @@ function Leetcode() {
     };
     fetchCodes();
   }, []);
+
+  useEffect(() => {
+    if (code && code.recentSubmissions) {
+      setRecentSubmission(code.recentSubmissions);
+    }
+  }, [code]); 
 
   if (loading) {
     return <div>Loading...</div>;
@@ -87,8 +94,8 @@ function Leetcode() {
           code.mediumSolved,// Solved Medium problems
           code.hardSolved,  // Solved Hard problems
         ],
-        backgroundColor: '#66BB6A',
-        borderColor: '#388E3C',
+        backgroundColor: '#aqua',
+        hoverBackgroundColor: 'skyblue',
         borderWidth: 1,
       },
     ],
@@ -110,16 +117,31 @@ function Leetcode() {
   return (
     <div className="LeetcodeContainer">
       
-    <div className="chartsContains">
-      <div className='leetDoughnut'>
-        <h2>Problem Difficulty Doughnut Chart</h2>
-        <Doughnut data={doughnutData} options={doughnutOptions}  plugins={[centerTextPlugin]} />
-      </div>
+      <div className="chartsContains">
+        <div className='leetDoughnut'>
+          <h2>Problem Difficulty Doughnut Chart</h2>
+          <Doughnut data={doughnutData} options={doughnutOptions}  plugins={[centerTextPlugin]} />
+        </div>
 
-      <div className='leetBar'>
-        <h2>Problems vs Solved Bar Chart</h2>
-        <Bar data={barData} options={barOptions} />
+        <div className='leetBar'>
+          <h2>Problems vs Solved Bar Chart</h2>
+          <Bar data={barData} options={barOptions} />
+        </div>
       </div>
+      <div className="leetSubmission">
+      <h1>Some of My Recent Submissions</h1>
+        <div className="leetSubmissionsContains">
+          {recentSubmission.map((submission, index) => (
+            submission.statusDisplay === 'Accepted' && (
+            <div className="leetRecentSubmission" key={index}>
+              <p>Title: <b>{submission.title}</b></p>
+              <p>Submitted On: <b>{(new Date(submission.timestamp * 1000)).toUTCString().slice(0,-4)}</b></p>
+              <p>Language: <b>{submission.lang}</b></p>
+            </div>
+            )
+          ))}
+        </div><br /><br />
+        <a href="https://leetcode.com/u/Sandipan_Adhikary/" target='_blank' className='leetcodeBtn'>Visit my leetcode Profile for more Info</a>
       </div>
     </div>
   );
