@@ -16,7 +16,6 @@ function Leetcode() {
     const fetchCodes = async () => {
       try {
         const response = await axios.get(`https://leetcode-api-faisalshohag.vercel.app/${username}`);
-        console.log(response, `https://leetcode-api-faisalshohag.vercel.app/${username}`);
         setCode(response.data);
         setLoading(false);
       } catch (error) {
@@ -31,7 +30,6 @@ function Leetcode() {
     return <div>Loading...</div>;
   }
 
-  // Pie chart data
   const doughnutData = {
     labels: ['Easy', 'Medium', 'Hard'],
     datasets: [
@@ -43,22 +41,44 @@ function Leetcode() {
     ],
   };
 
+  const doughnutOptions = {
+    responsive: true,
+    plugins: {
+      tooltip: {
+        enabled: true,
+      },
+    },
+    cutout: 80,
+  };
+
+  const centerTextPlugin = {
+    id: 'centerText',
+    beforeDraw(chart) {
+      const ctx = chart.ctx;
+      const width = chart.width;
+      const height = chart.height;
+      const fontSize = '4px';
+      const text = `Total Submission: ${code.totalSolved}`; 
+      const textX = width / 2;
+      const textY = height / 2;
+
+      // Set up text style
+      ctx.save();
+      ctx.font = fontSize + 'em sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillStyle = 'white'; // Text color
+
+      // Draw the text
+      ctx.fillText(text, textX, textY);
+      ctx.restore();
+    },
+  };
+
   // Bar chart data
   const barData = {
     labels: ['All', 'Easy', 'Medium', 'Hard'],
     datasets: [
-      {
-        label: 'Total Problems',
-        data: [
-          code.totalQuestions, // Total number of problems
-          code.totalEasy,     // Total Easy problems
-          code.totalMedium,   // Total Medium problems
-          code.totalHard,     // Total Hard problems
-        ],
-        backgroundColor: '#42A5F5',
-        borderColor: '#1E88E5',
-        borderWidth: 1,
-      },
       {
         label: 'Solved Problems',
         data: [
@@ -89,18 +109,17 @@ function Leetcode() {
 
   return (
     <div className="LeetcodeContainer">
-      <h1>LeetCode Problem Difficulty Distribution</h1>
       
-      {/* Pie Chart */}
-      <div>
-        <h2>Problem Difficulty Distribution (Pie Chart)</h2>
-        <Doughnut data={doughnutData} />
+    <div className="chartsContains">
+      <div className='leetDoughnut'>
+        <h2>Problem Difficulty Doughnut Chart</h2>
+        <Doughnut data={doughnutData} options={doughnutOptions}  plugins={[centerTextPlugin]} />
       </div>
 
-      {/* Bar Chart */}
-      <div style={{ marginTop: '40px' }}>
-        <h2>Problems vs Solved (Bar Chart)</h2>
+      <div className='leetBar'>
+        <h2>Problems vs Solved Bar Chart</h2>
         <Bar data={barData} options={barOptions} />
+      </div>
       </div>
     </div>
   );

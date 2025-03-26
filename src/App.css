@@ -201,6 +201,28 @@
   color: aqua;
 }
 
+
+
+/* Leetcode css */
+
+.chartsContains {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  padding: 0 40px;
+}
+
+.leetDoughnut {
+  width: 300px;
+  h2 {
+    white-space: nowrap;
+  }
+}
+
+.leetBar {
+  width: 600px;
+}
+
 /* Projects CSS */
 
 .projectContainer {
