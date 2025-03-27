@@ -290,6 +290,20 @@
   box-shadow: 0 0 20px yellow, 0 0 40px red;
 }
 
+/* Github CSS */
+
+.githubchartcontains {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  padding: 0 40px;
+  flex-wrap: wrap;
+}
+
+.githubPie {
+  width: 400px;
+}
+
 /* Projects CSS */
 
 .projectContainer {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Doughnut, Bar, Line } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, BarElement, CategoryScale, LinearScale, LineElement, PointElement, plugins  } from 'chart.js';
+import { color } from 'chart.js/helpers';
 
 // Register necessary components for Chart.js
 ChartJS.register(ArcElement, Tooltip, Legend, BarElement, CategoryScale, LinearScale, LineElement, PointElement );
@@ -133,10 +134,22 @@ function Leetcode() {
     scales: {
       x: {
         beginAtZero: true,
+        grid: {
+          color: 'rgb(56, 56, 56)'
+        },
+        ticks: {
+          color: 'rgb(153, 153, 153)'
+        },
       },
       y: {
         beginAtZero: true,
-      },
+        grid: {
+          color: 'rgb(56, 56, 56)'
+        },
+        ticks: {
+          color: 'rgb(153, 153, 153)'
+        },
+      }
     },
   };
 
@@ -175,9 +188,13 @@ function Leetcode() {
           display: true,
           text: 'Date',
         },
+        grid: {
+          color: 'rgb(22, 22, 22)'
+        },
         ticks: {
           maxRotation: 45,
           minRotation: 45,
+          color: 'rgb(153, 153, 153)'
         },
       },
       y: {
@@ -186,6 +203,12 @@ function Leetcode() {
           text: 'Number of Submissions',
         },
         beginAtZero: true,
+        grid: {
+          color: 'rgb(22, 22, 22)'
+        },
+        ticks: {
+          color: 'rgb(179, 177, 177)'
+        },
       },
     },
   };

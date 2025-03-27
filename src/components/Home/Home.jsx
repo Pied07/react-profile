@@ -4,6 +4,7 @@ import { useState,useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import sandipan from '../../assets/sandipan.jpeg'
 import Leetcode from './Leetcode/Leetcode';
+import Github from './Github/Github';
 
 function Home() {
   const [repos, setRepos] = useState([]);
@@ -69,7 +70,7 @@ function Home() {
                 <p>I am a passionate and skilled software developer with experience in building efficient and scalable solutions. With expertise in languages like JavaScript, Python, PHP, JAVA and SQL. I am well-versed in frameworks like React, Node.js, and Django, Laravel and I pride myself on writing clean, maintainable code. Continuously learning and adapting to new technologies, I enjoy tackling challenging problems and collaborating with teams to create impactful, user-centric applications. In my free time, I stay engaged with the tech community through Tech podcasts and Tech Articles.</p>
               </div>
               <div className="homeRight">
-                <img className='myImage' src={sandipan} alt="My Pic" />
+                {/* <img className='myImage' src={sandipan} alt="My Pic" /> */}
               </div>
             </div>
             <br /><br />
@@ -101,9 +102,10 @@ function Home() {
                     <Link className='projectButton' to="/projects">See All Projects</Link>
               </div>
               <div className="homeLeetcodeContainer">
-                <div className="homeLeetcodeContains">
                   <Leetcode />
-                </div>
+              </div>
+              <div className="homeGithubContainer">
+                <Github />
               </div>
           </div>
     </>
