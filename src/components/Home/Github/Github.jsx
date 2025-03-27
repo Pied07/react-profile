@@ -1,9 +1,10 @@
 import React from 'react'
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import { Pie } from 'react-chartjs-2';
+import { Chart, Pie } from 'react-chartjs-2';
 import { layouts } from 'chart.js';
 import { color } from 'chart.js/helpers';
+import { data } from 'react-router-dom';
 
 function Github() {
     const [repos, setRepos] = useState([]);
@@ -44,16 +45,6 @@ function Github() {
         }
     },[repos])
 
-    const colorsRef = useRef(null);
-    
-    useEffect(() => {
-        if (languages && colorsRef.current.length === 0) {
-            colorsRef.current = Object.keys(languages).map(
-                () => "#" + Math.floor(Math.random() * 16777215).toString(16)
-            );
-        }
-    }, [languages]);
-
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -63,7 +54,7 @@ function Github() {
         datasets: [
             {
                 data: Object.values(languages),
-                backgroundColor: colorsRef.current,
+                backgroundColor: 'rgb(4, 7, 37)',
                 borderColor: 'aqua',
                 hoverOffset: 50
             },
@@ -87,14 +78,11 @@ function Github() {
                 enabled: true,
             },
             legend: {
+                display: false,
+            },
+            dataLabels: {
                 display: true,
                 color: 'white',
-                labels: {
-                    color: 'white',
-                    font: {
-                        size: 14,
-                    },
-                }
             }
         },
     };
