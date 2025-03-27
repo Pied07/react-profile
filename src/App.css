@@ -294,14 +294,23 @@
 
 .githubchartcontains {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: start;
   padding: 0 40px;
   flex-wrap: wrap;
+  margin-top: 60px;
+  h1 {
+    color: red;
+    text-decoration: underline;
+  }
 }
 
 .githubPie {
   width: 400px;
+}
+
+.githubLine {
+  width: 600px;
 }
 
 /* Projects CSS */

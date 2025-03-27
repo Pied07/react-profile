@@ -1,16 +1,27 @@
 import React from 'react'
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import { Chart, Pie } from 'react-chartjs-2';
-import { layouts } from 'chart.js';
-import { color } from 'chart.js/helpers';
-import { data } from 'react-router-dom';
+import { Pie } from 'react-chartjs-2';
+import ChartDataLabels from 'chartjs-plugin-datalabels'
+
+
+const getRandomColor = () => {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+};
 
 function Github() {
     const [repos, setRepos] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [languages, setLanguages] = useState(null);
+    const [colors, setColors] = useState([])
+    const [createdAt, setCreatedAt] = useState(null)
+    const [updatedAt, setUpdatedAt] = useState(null)
 
     let username = "Pied07"
     const fetchRepos = async () => {
@@ -33,17 +44,37 @@ function Github() {
     useEffect(() => {
         if(repos) {
             let usedLanguages = {}
+            let created_at = []
+            let updated_at = []
             repos.map((repo) => {
-                if (usedLanguages[repo.language]) {
-                    usedLanguages[repo.language] += 1
+                if (repo.language) {
+                    if (usedLanguages[repo.language]) {
+                        usedLanguages[repo.language] += 1
+                        console.log(repo.language)
+                    }
+                    else {
+                        usedLanguages[repo.language] = 1
+                    }
                 }
-                else {
-                    usedLanguages[repo.language] = 1
-                }
+                const createdDate = new Date(repo.created_at).getDate();
+                const updatedDate = new Date(repo.updated_at).getDate(); 
+
+                created_at[repo.name] = createdDate;
+                updated_at[repo.name] = updatedDate;
             })
             setLanguages(usedLanguages)
+            setCreatedAt(created_at)
+            setUpdatedAt(updated_at)
         }
     },[repos])
+
+    useEffect(() => {
+        if (languages) {
+            const generatedColors = Object.keys(languages).map(() => getRandomColor());
+            setColors(generatedColors);
+        }
+    }, [languages]);
+
 
     if (loading) {
         return <div>Loading...</div>;
@@ -54,9 +85,9 @@ function Github() {
         datasets: [
             {
                 data: Object.values(languages),
-                backgroundColor: 'rgb(4, 7, 37)',
+                backgroundColor: colors,
                 borderColor: 'aqua',
-                hoverOffset: 50
+                hoverOffset: 60
             },
         ],
     }
@@ -64,36 +95,50 @@ function Github() {
     const pieOptions = {
         responsive: true,
         maintainAspectRatio: true,
-        animation: {
-            animateScale: true,
-            animateRotate: true,
-            duration: 10,
-            easing: "easeOutBounce",
-        },
-        layout: {
-            padding: 40
-        },
         plugins: {
             tooltip: {
-                enabled: true,
+                enabled: false,
             },
             legend: {
                 display: false,
             },
-            dataLabels: {
+            datalabels: {
                 display: true,
+                formatter: (value, context) => {
+                    const label = context.chart.data.labels[context.dataIndex];
+                    return `${label}: ${value}`;
+                },
                 color: 'white',
-            }
+                font: {
+                    weight: 'bold',
+                    size: 12,
+                },
+
+                anchor: 'end',
+                align: 'start',
+                padding: 5,
+                borderRadius: 4,
+                backgroundColor: 'rgba(0, 0, 0, 0.7)',
+            },
+        },
+        layout: {
+            padding: 40,
+        },
+        animation: {
+            animateScale: true,
+            animateRotate: true,
+            duration: 1,
+            easing: 'easeOutBounce',
         },
     };
     
     return (
         <>
-            <h1>Some Detailed Info About My Github Projects</h1>
             <div className="githubchartcontains">
+            <h1>Some Detailed Info About My Github Projects</h1>
                 <div className="githubPie">
                 <h2>Programming Languages Used</h2>
-                    <Pie className='githubPieContainer' data={pieData} options={pieOptions} />
+                    <Pie className='githubPieContainer' data={pieData} options={pieOptions} plugins={[ChartDataLabels]} />
                 </div>
             </div>
         </>

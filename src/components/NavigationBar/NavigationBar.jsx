@@ -9,6 +9,7 @@ function NavigationBar() {
   useEffect(() => {
     const currentRoute = location.pathname.split("/").pop();
     setActiveLink(currentRoute || "home");
+    console.log(window.location, currentRoute)
     
     const navText = document.getElementById('navText');
     navText.innerText = currentRoute || "home";
