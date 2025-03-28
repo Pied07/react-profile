@@ -86,8 +86,7 @@ function Github() {
             {
                 data: Object.values(languages),
                 backgroundColor: colors,
-                borderColor: 'aqua',
-                hoverOffset: 60
+                borderColor: 'aqua'
             },
         ],
     }
@@ -127,17 +126,18 @@ function Github() {
         animation: {
             animateScale: true,
             animateRotate: true,
-            duration: 1,
+            duration: 100,
             easing: 'easeOutBounce',
         },
+        hoverOffset: 80
     };
     
     return (
         <>
             <div className="githubchartcontains">
-            <h1>Some Detailed Info About My Github Projects</h1>
+            <h1>Programming Languages used on Github</h1>
                 <div className="githubPie">
-                <h2>Programming Languages Used</h2>
+                <h2>All Programming Languages Used</h2>
                     <Pie className='githubPieContainer' data={pieData} options={pieOptions} plugins={[ChartDataLabels]} />
                 </div>
             </div>

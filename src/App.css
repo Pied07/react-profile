@@ -78,6 +78,11 @@
   border: 2px solid red;
 }
 
+.navRight ul li:nth-last-child(1) .navText:hover {
+  box-shadow: 0 0 15px red, 0 0 30px yellow;
+  background-color: rgb(4, 4, 100);
+}
+
 .navText:hover {
   color: yellow;
 }
@@ -134,6 +139,25 @@
   opacity: 1;
   width: 420px;
   height: 420px;
+}
+
+.homeHandles {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  gap: 20px;
+  a {
+    color: black;
+    font-weight: bold;
+    background-color: yellow;
+    padding: 10px;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+  }
+  a:hover {
+    box-shadow: 0 0 15px red, 0 0 30px yellow;
+  }
 }
 
 .homeCards {
@@ -262,7 +286,14 @@
   display: flex;
   justify-content: space-between;
   padding: 0 10px;
+  overflow: hidden;
   transition: all 0.3s ease-in-out;
+}
+
+.leetRecentSubmission p {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 300px;
 }
 
 .leetRecentSubmission:hover {
@@ -365,10 +396,15 @@
     box-shadow: 0 0 15px red;
   }
 }
+/* Contact CSS */
 
 .contactContainer {
   padding: 20px;
-  place-items: center;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   h1 {
     color: yellow;
     text-decoration: underline;
@@ -381,6 +417,9 @@
   color: black;
   margin: 10px;
   width: fit-content;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 .cardContainer {
@@ -390,7 +429,7 @@
   display: flex;
   padding: 20px;
   border-radius: 8px;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
 }
 
@@ -457,12 +496,12 @@
 .modalContent::before{
   content: '';
   position: absolute;
-  top: -3px;
-  left: -3px;
-  width: calc(100% + 6px);
-  height: calc(100% + 6px); 
+  top: -10px;
+  left: -10px;
+  width: calc(100% + 20px);
+  height: calc(100% + 20px); 
   border-radius: 20px;
-  background: linear-gradient(to bottom right, red, yellow, blue, indigo,crimson, purple, magenta, green);
+  background: linear-gradient(to bottom right, red, yellow, crimson, purple, magenta, green, orange, violet, pink, brown, black, white);
   box-shadow: 0 0 30px red, 0 0 50px yellow , 0 0 80px purple, 0 0 120px indigo;
   background-size: 300% 300%;
   z-index: -1;

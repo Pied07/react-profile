@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Doughnut, Bar, Line } from 'react-chartjs-2';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend, BarElement, CategoryScale, LinearScale, LineElement, PointElement, plugins  } from 'chart.js';
-import { color } from 'chart.js/helpers';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, BarElement, CategoryScale, LinearScale, LineElement, PointElement  } from 'chart.js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faXmarkCircle } from '@fortawesome/free-regular-svg-icons'
 
 // Register necessary components for Chart.js
 ChartJS.register(ArcElement, Tooltip, Legend, BarElement, CategoryScale, LinearScale, LineElement, PointElement );
@@ -12,6 +13,7 @@ function Leetcode() {
   const [loading, setLoading] = useState(true); // Loading state for data fetch
   const [recentSubmission, setRecentSubmission] = useState([])
   const [calender, setCalender] = useState([])
+  const [selectedProject, setSelectedproject] = useState(null)
 
   const username = 'Sandipan_Adhikary';
 
@@ -41,6 +43,14 @@ function Leetcode() {
 
   if (loading) {
     return <div>Loading...</div>;
+  }
+
+  const openProjectModal = (project) => {
+      setSelectedproject(project)
+  }
+
+  const closeProjectModal = () => {
+      setSelectedproject(null)
   }
 
   const doughnutData = {
@@ -238,14 +248,25 @@ function Leetcode() {
         <div className="leetSubmissionsContains">
           {recentSubmission.map((submission, index) => (
             submission.statusDisplay === 'Accepted' && (
-            <div className="leetRecentSubmission" key={index}>
+            <div className="leetRecentSubmission" key={index} onClick={() => openProjectModal(submission)}>
               <p>Title: <b>{submission.title}</b></p>
               <p>Submitted On: <b>{(new Date(submission.timestamp * 1000)).toUTCString().slice(0,-4)}</b></p>
               <p>Language: <b>{submission.lang}</b></p>
             </div>
             )
           ))}
-        </div><br /><br />
+        </div>
+        {selectedProject && (
+            <div className="modal" onClick={closeProjectModal}>
+                <div className="modalContent">
+                    <h2>Title: {selectedProject.title}</h2>
+                    <h4>Submitted On: {(new Date(selectedProject.timestamp * 1000)).toUTCString().slice(0,-4)}</h4>
+                    <h4>Language: {selectedProject.lang}</h4>
+                    <p>Check my Leetcode profile <a href={`https://leetcode.com/u/${username}/`} target='_blank' rel='noopener noreferrer'>Click Here</a></p>
+                    <div className="modalActions" onClick={closeProjectModal}><FontAwesomeIcon className='closeIcon' icon={faXmarkCircle} /></div>
+                </div>
+            </div>
+        )}<br /><br />
         <a href="https://leetcode.com/u/Sandipan_Adhikary/" target='_blank' className='leetcodeBtn'>Visit my leetcode Profile for more Info</a>
       </div>
     </div>

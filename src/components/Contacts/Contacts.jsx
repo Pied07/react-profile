@@ -38,7 +38,7 @@ function Contacts() {
                 <div className="cardContainer">
                     <div className="cardTitle"><FontAwesomeIcon icon={faLinkedin} /></div>
                     <div className="cardElement">
-                        <p>LinkedIn Profile: <a href="">LinkedIn Profile</a></p>
+                        <p>Check my LinkedIn Profile <a href="">Here</a></p>
                     </div>
                 </div>
             </div>
