@@ -26,6 +26,7 @@ function NavigationBar() {
             <li><Link className={activeLink === 'projects' ? 'navText active' : 'navText'} to="/projects">Projects</Link></li>
             <li><Link className={activeLink === 'about' ? 'navText active' : 'navText'} to="/about">About</Link></li>
             <li><Link className={activeLink === 'contacts' ? 'navText active' : 'navText'} to="/contacts">Contact</Link></li>
+            <li><Link className={activeLink === 'resume' ? 'navText active' : 'navText'} to="/resume">Download Resume</Link></li>
         </ul>
         </div>
     </nav>

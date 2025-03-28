@@ -71,6 +71,13 @@
   color: white;
   transition: all 1s ease;
 }
+
+.navRight ul li:nth-last-child(1) .navText {
+  padding: 10px;
+  border-radius: 20px;
+  border: 2px solid red;
+}
+
 .navText:hover {
   color: yellow;
 }
@@ -92,6 +99,10 @@
 
 .navText:hover::after {
   width: 100%;
+}
+
+.navRight ul li:nth-last-child(1) .navText::after {
+  width: 0;
 }
 
 /* Home CSS */
