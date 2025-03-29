@@ -7,7 +7,7 @@ import Leetcode from './Leetcode/Leetcode';
 import Github from './Github/Github';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faHackerrank, faLinkedin } from '@fortawesome/free-brands-svg-icons'
-import { faCode } from '@fortawesome/free-solid-svg-icons';
+import { faCode, faDownload } from '@fortawesome/free-solid-svg-icons';
 
 function Home() {
   const [repos, setRepos] = useState([]);
@@ -81,6 +81,7 @@ function Home() {
               <a href="https://www.linkedin.com/in/sandipan-adhikary-ab418b230/"><FontAwesomeIcon icon={faLinkedin} /> My LinkedIn Account</a>
               <a href="https://leetcode.com/u/Sandipan_Adhikary/"><FontAwesomeIcon icon={faCode} /> My Leetcode Account</a>
               <a href="https://www.hackerrank.com/profile/sandipanadhikar2"><FontAwesomeIcon icon={faHackerrank} /> My HackerRank Account</a>
+              <a href=""><FontAwesomeIcon icon={faDownload} /> Download my Resume</a>
             </div>
             <br /><br />
             <div className="homeRecentProjects">

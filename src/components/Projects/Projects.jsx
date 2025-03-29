@@ -28,31 +28,39 @@ function Projects() {
         fetchProjects()
     },[])
 
-    const checkWebsiteAvailability = async (repoName) => {
+    const checkWebsiteAvailability = async (repo) => {
         try {
-            const response = await axios.get(`https://${username}.github.io/${repoName}/`);
+            if(repo.homepage !== null) {
+                setSiteAvailable((prevState) => ({
+                    ...prevState,
+                    [repo.name]: repo.homepage,
+                }));
+                return;
+            }
+            $url = `https://${username}.github.io/${repo.name}/`;
+            const response = await axios.get($url);
             if (response.status === 200) {
             setSiteAvailable((prevState) => ({
                 ...prevState,
-                [repoName]: true,
+                [repo.name]: $url,
             }));
             } else {
             setSiteAvailable((prevState) => ({
                 ...prevState,
-                [repoName]: false,
+                [repo.name]: null,
             }));
             }
         } catch (error) {
             setSiteAvailable((prevState) => ({
             ...prevState,
-            [repoName]: false,
+            [repo.name]: null,
             }));
         }
     };
 
     useEffect(() => {
         projects.forEach((repo) => {
-            checkWebsiteAvailability(repo.name);
+            checkWebsiteAvailability(repo);
         });
     }, [projects]);
 
