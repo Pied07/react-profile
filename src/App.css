@@ -65,6 +65,7 @@
 
 .navLeft h2 {
   text-transform: capitalize;
+  cursor: default;
 }
 
 .navText {
@@ -123,7 +124,7 @@
 .homeLeft {
   text-align: left;
   span, h3 {
-    color: red;
+    color: yellow;
   }
 }
 
@@ -149,9 +150,9 @@
   margin-top: 20px;
   gap: 20px;
   a {
-    color: black;
+    color: yellow;
     font-weight: bold;
-    background-color: yellow;
+    background-color: purple;
     padding: 10px;
     border-radius: 8px;
     transition: all 0.3s ease-in-out;
@@ -168,8 +169,16 @@
 }
 
 .homeRecentProjects h1 {
+  color: yellow;
+  text-decoration: underline;
+}
+
+.homeRecentProjects span {
   color: red;
   text-decoration: underline;
+  font-weight: bolder;
+  font-size: large;
+  margin-bottom: 20px;
 }
 
 .homeProjectCardContainer {
@@ -242,7 +251,7 @@
 /* Leetcode css */
 
 .LeetcodeContainer h1 {
-  color: red;
+  color: yellow;
   text-decoration: underline;
 }
 
@@ -270,7 +279,7 @@
 }
 
 .leetSubmission h1 {
-  color: red;
+  color: yellow;
   text-decoration: underline;
 }
 
@@ -324,7 +333,7 @@
   flex-wrap: wrap;
   margin-top: 60px;
   h1 {
-    color: red;
+    color: yellow;
     text-decoration: underline;
   }
 }
@@ -342,7 +351,7 @@
 .projectContainer {
   margin-top: 100px;
   h1 {
-    color: red;
+    color: yellow;
     text-decoration: underline;
   }
 }
@@ -461,6 +470,16 @@
     background-color: whitesmoke;
     border-radius: 8px;
     border: 1px solid black;
+    padding: 3px;
+    color: black;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover, 
+  input:-webkit-autofill:focus, 
+  input:-webkit-autofill:active{
+      -webkit-box-shadow: 0 0 0 30px whitesmoke inset !important;
+      -webkit-text-fill-color: #000000 !important;
   }
   textarea {
     width: 500px;
@@ -468,6 +487,21 @@
     background-color: whitesmoke;
     border-radius: 8px;
     border: 1px solid black;
+    padding: 5px;
+    color: black;
+  }
+
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover, 
+  textarea:-webkit-autofill:focus, 
+  textarea:-webkit-autofill:active{
+      -webkit-box-shadow: 0 0 0 30px whitesmoke inset !important;
+      -webkit-text-fill-color: #000000 !important;
+  }
+
+  .attachment {
+    background-color: transparent;
+    border: none;
   }
 }
 

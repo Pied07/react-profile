@@ -36,20 +36,21 @@ function Projects() {
                     [repo.name]: repo.homepage,
                 }));
                 return;
-            }
-            $url = `https://${username}.github.io/${repo.name}/`;
-            const response = await axios.get($url);
-            if (response.status === 200) {
-            setSiteAvailable((prevState) => ({
-                ...prevState,
-                [repo.name]: $url,
-            }));
             } else {
-            setSiteAvailable((prevState) => ({
-                ...prevState,
-                [repo.name]: null,
-            }));
-            }
+                let url = `https://${username}.github.io/${repo.name}/`;
+                const response = await axios.get(url);
+                if (response.status === 200) {
+                setSiteAvailable((prevState) => ({
+                    ...prevState,
+                    [repo.name]: url,
+                }));
+                } else {
+                setSiteAvailable((prevState) => ({
+                    ...prevState,
+                    [repo.name]: null,
+                }));
+                }
+            }   
         } catch (error) {
             setSiteAvailable((prevState) => ({
             ...prevState,
@@ -76,6 +77,7 @@ function Projects() {
     <>
         <div className="projectContainer">
             <h1>My Projects</h1>
+            <span><b>**Note :</b> All the Project website might not Open since I have used free tier plan's for Database and hosting on platforms like Vercel or Render So that plan might be Exhausted Kindly Ignore those. </span>
             <div className="projectCards">
                 {projects.map((project) => (
                 <div className='ProjectCardContainer' key={project.id} onClick={()=>openProjectModal(project)}>
@@ -87,7 +89,7 @@ function Projects() {
                     </a>
                     {siteAvailable[project.name] && (
                         <a 
-                        href={`https://${username}.github.io/${project.name}/`} 
+                        href={siteAvailable[project.name]} 
                         target='_blank' 
                         rel='noopener noreferrer'
                         >

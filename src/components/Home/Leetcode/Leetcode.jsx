@@ -3,7 +3,8 @@ import axios from 'axios';
 import { Doughnut, Bar, Line } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, BarElement, CategoryScale, LinearScale, LineElement, PointElement  } from 'chart.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faXmarkCircle } from '@fortawesome/free-regular-svg-icons'
+import { faChartBar, faXmarkCircle } from '@fortawesome/free-regular-svg-icons'
+import { faCode, faLineChart, faPieChart } from '@fortawesome/free-solid-svg-icons';
 
 // Register necessary components for Chart.js
 ChartJS.register(ArcElement, Tooltip, Legend, BarElement, CategoryScale, LinearScale, LineElement, PointElement );
@@ -225,26 +226,26 @@ function Leetcode() {
 
   return (
     <div className="LeetcodeContainer">
-      <h1>My LeetCode Progress</h1>
+      <h1><FontAwesomeIcon icon={faCode} />  My LeetCode Progress</h1>
       <div className="chartsContains">
         <div className='leetDoughnut'>
-          <h2>Problem Difficulty</h2>
+          <h2>Problem Difficulty  <FontAwesomeIcon icon={faPieChart} /></h2>
           <Doughnut data={doughnutData} options={doughnutOptions}  plugins={[centerTextPlugin]} />
         </div>
 
         <div className='leetBar'>
-          <h2>Problems Solved</h2>
+          <h2>Problems Solved  <FontAwesomeIcon icon={faChartBar} /></h2>
           <Bar data={barData} options={barOptions} />
         </div>
         <div className='leetLine'>
-          <h2>Submission of Problems</h2>
+          <h2>Submission of Problems  <FontAwesomeIcon icon={faLineChart} /></h2>
           <Line data={lineData} options={lineOptions} />
       </div>
       </div>
       
       
       <div className="leetSubmission">
-      <h1>Some of My Recent Submissions</h1>
+      <h1><FontAwesomeIcon icon={faCode} />  Some of My Recent Submissions</h1>
         <div className="leetSubmissionsContains">
           {recentSubmission.map((submission, index) => (
             submission.statusDisplay === 'Accepted' && (

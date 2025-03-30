@@ -3,6 +3,8 @@ import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { Pie } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faComputer, faPieChart } from '@fortawesome/free-solid-svg-icons';
 
 
 const getRandomColor = () => {
@@ -50,7 +52,6 @@ function Github() {
                 if (repo.language) {
                     if (usedLanguages[repo.language]) {
                         usedLanguages[repo.language] += 1
-                        console.log(repo.language)
                     }
                     else {
                         usedLanguages[repo.language] = 1
@@ -135,9 +136,9 @@ function Github() {
     return (
         <>
             <div className="githubchartcontains">
-            <h1>Programming Languages used on Github</h1>
+            <h1><FontAwesomeIcon icon={faComputer} />  Programming Languages used on Github</h1>
                 <div className="githubPie">
-                <h2>All Programming Languages Used</h2>
+                <h2>All Programming Languages Used  <FontAwesomeIcon icon={faPieChart} /></h2>
                     <Pie className='githubPieContainer' data={pieData} options={pieOptions} plugins={[ChartDataLabels]} />
                 </div>
             </div>

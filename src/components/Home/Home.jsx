@@ -7,7 +7,7 @@ import Leetcode from './Leetcode/Leetcode';
 import Github from './Github/Github';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faHackerrank, faLinkedin } from '@fortawesome/free-brands-svg-icons'
-import { faCode, faDownload } from '@fortawesome/free-solid-svg-icons';
+import { faCode, faDownload, faHome, faList, faWarning } from '@fortawesome/free-solid-svg-icons';
 
 function Home() {
   const [repos, setRepos] = useState([]);
@@ -35,31 +35,39 @@ function Home() {
     fetchRepos();
   }, []);
 
-  const checkWebsiteAvailability = async (repoName) => {
+  const checkWebsiteAvailability = async (repo) => {
     try {
-      const response = await axios.get(`https://${username}.github.io/${repoName}/`);
-      if (response.status === 200) {
-        setSiteAvailable((prevState) => ({
-          ...prevState,
-          [repoName]: true,
-        }));
-      } else {
-        setSiteAvailable((prevState) => ({
-          ...prevState,
-          [repoName]: false,
-        }));
+      if(repo.homepage !== null) {
+          setSiteAvailable((prevState) => ({
+              ...prevState,
+              [repo.name]: repo.homepage,
+          }));
+          return;
       }
-    } catch (error) {
+      let url = `https://${username}.github.io/${repo.name}/`;
+      const response = await axios.get(url);
+      if (response.status === 200) {
+      setSiteAvailable((prevState) => ({
+          ...prevState,
+          [repo.name]: url,
+      }));
+      } else {
+      setSiteAvailable((prevState) => ({
+          ...prevState,
+          [repo.name]: null,
+      }));
+      }
+  } catch (error) {
       setSiteAvailable((prevState) => ({
         ...prevState,
-        [repoName]: false,
+        [repo.name]: null,
       }));
     }
   };
 
   useEffect(() => {
     repos.forEach((repo) => {
-      checkWebsiteAvailability(repo.name);
+      checkWebsiteAvailability(repo);
     });
   }, [repos]);
 
@@ -69,7 +77,7 @@ function Home() {
             <div className="homeElements">
               <div className="homeLeft">
                 <h1>I am <span>Sandipan Adhikary</span></h1>
-                <h3>Welcome to my Profile</h3>
+                <h3><FontAwesomeIcon icon={faHome} />  Welcome to my Profile</h3>
                 <p>I am a passionate and skilled software developer with experience in building efficient and scalable solutions. With expertise in languages like JavaScript, Python, PHP, JAVA and SQL. I am well-versed in frameworks like React, Node.js, and Django, Laravel and I pride myself on writing clean, maintainable code. Continuously learning and adapting to new technologies, I enjoy tackling challenging problems and collaborating with teams to create impactful, user-centric applications. In my free time, I stay engaged with the tech community through Tech podcasts and Tech Articles.</p>
               </div>
               <div className="homeRight">
@@ -85,7 +93,8 @@ function Home() {
             </div>
             <br /><br />
             <div className="homeRecentProjects">
-              <h1>My Latest Projects</h1>
+              <h1><FontAwesomeIcon icon={faList} />  My Latest Projects</h1>
+              <span><FontAwesomeIcon icon={faWarning} />  <b>**Note :</b> All the Project website might not Open since I have used free tier plan's for Database and hosting on platforms like Vercel or Render So that plan might be Exhausted Kindly Ignore those. <FontAwesomeIcon icon={faWarning} /></span><br />
                   <div className="homeCards">
                   {repos.map((repo) => (
                     <div className='homeProjectCardContainer' key={repo.id}>
@@ -97,7 +106,7 @@ function Home() {
                         </a>
                         {siteAvailable[repo.name] && (
                           <a 
-                            href={`https://${username}.github.io/${repo.name}/`} 
+                            href={siteAvailable[repo.name]} 
                             target='_blank' 
                             rel='noopener noreferrer'
                           >
@@ -109,7 +118,7 @@ function Home() {
                   ))}
                   </div>
                   <br /><br />
-                    <Link className='projectButton' to="/projects">See All Projects</Link>
+                    <Link className='projectButton' to="/projects"><FontAwesomeIcon icon={faList} />  See All Projects</Link>
               </div>
               <div className="homeLeetcodeContainer">
                   <Leetcode />
