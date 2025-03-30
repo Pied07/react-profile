@@ -436,10 +436,11 @@
   background-color: white;
   margin-bottom: 20px;
   width: 100%;
+  min-width: 200px;
   display: flex;
   padding: 20px;
   border-radius: 8px;
-  justify-content: start;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -463,6 +464,7 @@
   flex-direction: column;
   width: 100%;
   align-items: center;
+  color: black;
   gap: 10px;
   input {
     min-width: 500px;
@@ -497,11 +499,6 @@
   textarea:-webkit-autofill:active{
       -webkit-box-shadow: 0 0 0 30px whitesmoke inset !important;
       -webkit-text-fill-color: #000000 !important;
-  }
-
-  .attachment {
-    background-color: transparent;
-    border: none;
   }
 }
 
