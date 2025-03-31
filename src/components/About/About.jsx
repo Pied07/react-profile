@@ -2,14 +2,16 @@ import React from 'react'
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component'
 import 'react-vertical-timeline-component/style.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBirthdayCake } from '@fortawesome/free-solid-svg-icons';
+import { faBirthdayCake, faSchool, faGraduationCap, faBriefcase, faDownload, faEye } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom'
+import Instaily from '../../assets/Instaily_Certification.jpg'
 
 function About() {
   return (
     <>
         <div className="aboutContainer">
             <h1>About Me</h1>
-            <p>Check My TimeLine Till now</p>
+            <h3>Check My TimeLine Till now</h3>
             <div className="aboutTimeLineContainer">
               <VerticalTimeline lineColor="green">
                 <VerticalTimelineElement
@@ -32,7 +34,7 @@ function About() {
                   contentStyle={{ background: 'rgb(243, 222, 33)', color: '#000' }}
                   contentArrowStyle={{ borderRight: '7px solid  rgb(243, 222, 33)' }}
                   iconStyle={{ background: 'rgb(243, 222, 33)', color: '#fff' }}
-                  icon={<FontAwesomeIcon icon={faBirthdayCake} />}
+                  icon={<FontAwesomeIcon icon={faSchool} />}
                 >
                   <h3 className="vertical-timeline-element-title">My School</h3>
                   <span className='aboutTimeLineDate'>Date: 2006 - 2018</span>
@@ -46,7 +48,7 @@ function About() {
                   contentStyle={{ background: 'skyblue', color: '#000' }}
                   contentArrowStyle={{ borderRight: '7px solid  skyblue' }}
                   iconStyle={{ background: 'skyblue', color: '#fff' }}
-                  icon={<FontAwesomeIcon icon={faBirthdayCake} />}
+                  icon={<FontAwesomeIcon icon={faSchool} />}
                 >
                   <h3 className="vertical-timeline-element-title">My High School</h3>
                   <span className='aboutTimeLineDate'>Date: 2018 - 2020</span>
@@ -60,7 +62,7 @@ function About() {
                   contentStyle={{ background: 'purple', color: '#000' }}
                   contentArrowStyle={{ borderRight: '7px solid  purple' }}
                   iconStyle={{ background: 'purple', color: '#fff' }}
-                  icon={<FontAwesomeIcon icon={faBirthdayCake} />}
+                  icon={<FontAwesomeIcon icon={faGraduationCap} />}
                 >
                   <h3 className="vertical-timeline-element-title">My College</h3>
                   <span className='aboutTimeLineDate'>Date: 2020 - 2024</span>
@@ -74,7 +76,7 @@ function About() {
                   contentStyle={{ background: 'green', color: '#000' }}
                   contentArrowStyle={{ borderRight: '7px solid  green' }}
                   iconStyle={{ background: 'green', color: '#fff' }}
-                  icon={<FontAwesomeIcon icon={faBirthdayCake} />}
+                  icon={<FontAwesomeIcon icon={faBriefcase} />}
                 >
                   <h3 className="vertical-timeline-element-title">My Current Job</h3>
                   <span className='aboutTimeLineDate'>Date: 2024 - present</span>
@@ -84,6 +86,23 @@ function About() {
                   </p>
                 </VerticalTimelineElement>
               </VerticalTimeline>
+            </div>
+            <div className="aboutCertificateContainer">
+              <div className='aboutCertificate'>
+                <h1>My Certificate</h1>
+                <h2>Instaily WebDevelopment Bootcamp Certification</h2>
+                <p>
+                  I successfully completed the Instaily Web Development Bootcamp, which ran from November 2024 to January 2025. This intensive course provided me with in-depth knowledge and hands-on experience in modern web development technologies, including HTML, CSS, JavaScript, React, and backend development. I achieved this certification on 9th March 2025, marking a significant milestone in my journey as a web developer.
+                </p>
+                <div className="aboutImgHeader">
+                <b>Instaily Certification</b>
+                <div className="aboutImgheaderActions">
+                  <Link className='downloadCertificate'><FontAwesomeIcon icon={faDownload} /><span className='downloadHelper'>Download</span></Link>
+                  <Link><FontAwesomeIcon className='ViewCertificate' icon={faEye} /></Link><span className='viewHelper'>View</span>
+                </div>
+                </div>
+                <img className='aboutcertificateImg' src={Instaily} alt="instaily certificate" />
+              </div>
             </div>
         </div>
     </>

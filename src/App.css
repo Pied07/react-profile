@@ -410,6 +410,10 @@
 
 /* About CSS */
 
+.aboutContainer {
+  margin-top: 100px;
+}
+
 .aboutTimeLineComponents {
   text-align: start;
   h3 {
@@ -427,6 +431,50 @@
   padding: 2px 5px;
   border-radius: 4px;
   float: right;
+}
+
+.aboutCertificateContainer {
+  background-color: whitesmoke;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+  color: black;
+}
+
+.aboutImgHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.aboutImgheaderActions {
+  display: flex;
+  gap: 5px;
+}
+
+.downloadCertificate {
+  position: relative;
+}
+
+.downloadHelper {
+  opacity: 0;
+  position: absolute;
+  visibility: hidden;
+  bottom: 100%;
+  left: 50%;
+  padding: 2px 5px;
+  border-radius: 5px;
+}
+
+.downloadCertificate:hover .downloadHelper {
+  opacity: 1;
+  visibility: visible;
+  background-color: rgba(0,0,0);
+  color: white;
+}
+
+.aboutcertificateImg {
+  width: 100%;
+  margin-top: 10px;
 }
 
 /* Contact CSS */
