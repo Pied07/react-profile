@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmarkCircle } from '@fortawesome/free-regular-svg-icons'
+import { faWarning } from '@fortawesome/free-solid-svg-icons'
 
 function Projects() {
     const [projects, setProjects] = useState([])
@@ -77,7 +78,7 @@ function Projects() {
     <>
         <div className="projectContainer">
             <h1>My Projects</h1>
-            <span><b>**Note :</b> All the Project website might not Open since I have used free tier plan's for Database and hosting on platforms like Vercel or Render So that plan might be Exhausted Kindly Ignore those. </span>
+            <span><FontAwesomeIcon icon={faWarning} /> <b>**Note :</b> All the Project website might not Open since I have used free tier plan's for Database and hosting on platforms like Vercel or Render So that plan might be Exhausted Kindly Ignore those. <FontAwesomeIcon icon={faWarning} /> </span><br /><br />
             <div className="projectCards">
                 {projects.map((project) => (
                 <div className='ProjectCardContainer' key={project.id} onClick={()=>openProjectModal(project)}>

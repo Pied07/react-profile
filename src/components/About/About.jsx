@@ -97,8 +97,8 @@ function About() {
                 <div className="aboutImgHeader">
                 <b>Instaily Certification</b>
                 <div className="aboutImgheaderActions">
-                  <Link className='downloadCertificate'><FontAwesomeIcon icon={faDownload} /><span className='downloadHelper'>Download</span></Link>
-                  <Link><FontAwesomeIcon className='ViewCertificate' icon={faEye} /></Link><span className='viewHelper'>View</span>
+                  <a href={Instaily} download="Sandipan_Instaily_Certificate.jpg"  className='downloadCertificate'><FontAwesomeIcon icon={faDownload} /><span className='downloadHelper'>Download</span></a>
+                  <a href={Instaily} target='_blank' className='ViewCertificate'><FontAwesomeIcon icon={faEye} /><span className='viewHelper'>View</span></a>
                 </div>
                 </div>
                 <img className='aboutcertificateImg' src={Instaily} alt="instaily certificate" />

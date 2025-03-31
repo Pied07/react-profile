@@ -94,7 +94,7 @@ function Home() {
             <br /><br />
             <div className="homeRecentProjects">
               <h1><FontAwesomeIcon icon={faList} />  My Latest Projects</h1>
-              <span><FontAwesomeIcon icon={faWarning} />  <b>**Note :</b> All the Project website might not Open since I have used free tier plan's for Database and hosting on platforms like Vercel or Render So that plan might be Exhausted Kindly Ignore those. <FontAwesomeIcon icon={faWarning} /></span><br />
+              <span><FontAwesomeIcon icon={faWarning} />  <b>**Note :</b> All the Project website might not Open since I have used free tier plan's for Database and hosting on platforms like Vercel or Render So that plan might be Exhausted Kindly Ignore those. <FontAwesomeIcon icon={faWarning} /></span><br /><br />
                   <div className="homeCards">
                   {repos.map((repo) => (
                     <div className='homeProjectCardContainer' key={repo.id}>

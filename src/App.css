@@ -145,7 +145,8 @@
 
 .homeHandles {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   margin-top: 20px;
   gap: 20px;
@@ -163,8 +164,9 @@
 }
 
 .homeCards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 40px;
 }
 
@@ -186,6 +188,7 @@
   padding: 20px;
   border-radius: 8px;
   text-align: left;
+  width: 250px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -354,11 +357,16 @@
     color: yellow;
     text-decoration: underline;
   }
+  span {
+    color: red;
+    text-decoration: underline;
+  }
 }
 
 .projectCards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 40px;
 }
 
@@ -369,6 +377,7 @@
   padding: 20px;
   border-radius: 8px;
   text-align: left;
+  width: 250px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -412,6 +421,10 @@
 
 .aboutContainer {
   margin-top: 100px;
+  h1 {
+    color: yellow;
+    text-decoration: underline;
+  }
 }
 
 .aboutTimeLineComponents {
@@ -451,11 +464,11 @@
   gap: 5px;
 }
 
-.downloadCertificate {
+.downloadCertificate, .ViewCertificate {
   position: relative;
 }
 
-.downloadHelper {
+.downloadHelper, .viewHelper {
   opacity: 0;
   position: absolute;
   visibility: hidden;
@@ -465,7 +478,7 @@
   border-radius: 5px;
 }
 
-.downloadCertificate:hover .downloadHelper {
+.downloadCertificate:hover .downloadHelper, .ViewCertificate:hover .viewHelper {
   opacity: 1;
   visibility: visible;
   background-color: rgba(0,0,0);
@@ -500,19 +513,21 @@
   width: fit-content;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
 .cardContainer {
   background-color: white;
   margin-bottom: 20px;
-  width: 100%;
+  width: 200px;
   min-width: 200px;
   display: flex;
   padding: 20px;
   border-radius: 8px;
   justify-content: space-between;
   align-items: center;
+  color: black;
 }
 
 .cardElement {
@@ -522,6 +537,7 @@
 .contactFormContainer {
   background-color: white;
   border-radius: 8px;
+  width: 100%;
   padding: 20px;
   h2 {
     text-decoration: underline;
@@ -535,10 +551,11 @@
   flex-direction: column;
   width: 100%;
   align-items: center;
+  justify-content: center;
   color: black;
   gap: 10px;
   input {
-    min-width: 500px;
+    min-width: 80%;
     min-height: 50px;
     background-color: whitesmoke;
     border-radius: 8px;
@@ -555,7 +572,7 @@
       -webkit-text-fill-color: #000000 !important;
   }
   textarea {
-    width: 500px;
+    min-width: 80%;
     height: 300px;
     background-color: whitesmoke;
     border-radius: 8px;
