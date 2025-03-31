@@ -406,6 +406,29 @@
     box-shadow: 0 0 15px red;
   }
 }
+
+
+/* About CSS */
+
+.aboutTimeLineComponents {
+  text-align: start;
+  h3 {
+    font-weight: bolder;
+  }
+  h4 {
+    font-weight: bold;
+    font-style: italic;
+  }
+}
+
+.aboutTimeLineDate {
+  color: white;
+  background-color: rgb(37, 1, 37);
+  padding: 2px 5px;
+  border-radius: 4px;
+  float: right;
+}
+
 /* Contact CSS */
 
 .contactContainer {
@@ -459,7 +482,7 @@
 }
 
 .contactForm {
-  margin-top: 20px;
+  margin: 20px;
   display: flex;
   flex-direction: column;
   width: 100%;
