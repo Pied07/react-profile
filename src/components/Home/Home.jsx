@@ -15,7 +15,7 @@ function Home() {
   const [error, setError] = useState(null);
   const [siteAvailable, setSiteAvailable] = useState({})
 
-  let username = "Pied07"
+  let username = import.meta.env.VITE_GITHUB_USERNAME;
 
   useEffect(() => {
     const fetchRepos = async () => {

@@ -20,11 +20,14 @@ function Contacts() {
         e.preventDefault();
 
         try {
+            const service_id = import.meta.env.VITE_SERVICE_ID;
+            const template_id = import.meta.env.VITE_TEMPLATE_ID;
+            const public_id = import.meta.env.VITE_PUBLIC_ID;
             let button = document.querySelector('.formSubmitBtn')
             button.innerText = "Sending..."
             button.disabled = true
             button.style.cursor = "not-allowed"
-            await emailjs.sendForm('service_l7u1fki', 'template_b8u3f33', e.target, '0THP0IQVaxvRQvv9V')
+            await emailjs.sendForm(service_id, template_id, e.target, public_id)
             button.innerText = "Submit"
             button.disabled = false
             button.style.cursor = "pointer"
