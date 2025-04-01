@@ -4,7 +4,7 @@ import 'react-vertical-timeline-component/style.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBirthdayCake, faSchool, faGraduationCap, faBriefcase, faDownload, faEye } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom'
-import Instaily from '../../assets/Instaily_Certification.jpg'
+import Instaily from '/assets/Instaily_Certification.jpg'
 
 function About() {
   return (

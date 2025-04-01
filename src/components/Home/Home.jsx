@@ -2,12 +2,13 @@ import React from 'react'
 import axios from 'axios';
 import { useState,useEffect } from 'react';
 import { Link } from 'react-router-dom'
-import sandipan from '../../assets/sandipan.jpeg'
+import sandipan from '/assets/sandipan.jpeg'
 import Leetcode from './Leetcode/Leetcode';
 import Github from './Github/Github';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faHackerrank, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { faCode, faDownload, faHome, faList, faWarning } from '@fortawesome/free-solid-svg-icons';
+import Myresume from '/assets/Sandipan_Resume.pdf'
 
 function Home() {
   const [repos, setRepos] = useState([]);
@@ -89,7 +90,7 @@ function Home() {
               <a href="https://www.linkedin.com/in/sandipan-adhikary-ab418b230/"><FontAwesomeIcon icon={faLinkedin} /> My LinkedIn Account</a>
               <a href="https://leetcode.com/u/Sandipan_Adhikary/"><FontAwesomeIcon icon={faCode} /> My Leetcode Account</a>
               <a href="https://www.hackerrank.com/profile/sandipanadhikar2"><FontAwesomeIcon icon={faHackerrank} /> My HackerRank Account</a>
-              <a href=""><FontAwesomeIcon icon={faDownload} /> Download my Resume</a>
+              <a href={Myresume} download><FontAwesomeIcon icon={faDownload} /> Download my Resume</a>
             </div>
             <br /><br />
             <div className="homeRecentProjects">
