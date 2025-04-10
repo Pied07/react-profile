@@ -5,6 +5,8 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend, BarElement, CategoryScal
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChartBar, faXmarkCircle } from '@fortawesome/free-regular-svg-icons'
 import { faCode, faLineChart, faPieChart } from '@fortawesome/free-solid-svg-icons';
+import AnimatedDiv from '../../AnimatedDiv';
+import Loading from '../../Loading';
 
 // Register necessary components for Chart.js
 ChartJS.register(ArcElement, Tooltip, Legend, BarElement, CategoryScale, LinearScale, LineElement, PointElement );
@@ -43,7 +45,7 @@ function Leetcode() {
   }, [code]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading />
   }
 
   const openProjectModal = (project) => {
@@ -149,7 +151,7 @@ function Leetcode() {
           color: 'rgb(56, 56, 56)'
         },
         ticks: {
-          color: 'rgb(153, 153, 153)'
+          color: 'rgb(224, 210, 13)'
         },
       },
       y: {
@@ -158,7 +160,7 @@ function Leetcode() {
           color: 'rgb(56, 56, 56)'
         },
         ticks: {
-          color: 'rgb(153, 153, 153)'
+          color: 'rgb(224, 210, 13)'
         },
       }
     },
@@ -196,8 +198,10 @@ function Leetcode() {
     scales: {
       x: {
         title: {
+          margin: 10,
           display: true,
           text: 'Date',
+          color: 'rgb(255, 255, 255)',
         },
         grid: {
           color: 'rgb(22, 22, 22)'
@@ -205,20 +209,22 @@ function Leetcode() {
         ticks: {
           maxRotation: 45,
           minRotation: 45,
-          color: 'rgb(153, 153, 153)'
+          color: 'rgb(224, 210, 13)'
         },
       },
       y: {
         title: {
           display: true,
           text: 'Number of Submissions',
+          color: 'rgb(255, 255, 255)',
+          marginTop: 10,
         },
         beginAtZero: true,
         grid: {
           color: 'rgb(22, 22, 22)'
         },
         ticks: {
-          color: 'rgb(179, 177, 177)'
+          color: 'rgb(224, 210, 13)'
         },
       },
     },
@@ -227,6 +233,7 @@ function Leetcode() {
   return (
     <div className="LeetcodeContainer">
       <h1><FontAwesomeIcon icon={faCode} />  My LeetCode Progress</h1>
+      <AnimatedDiv>
       <div className="chartsContains">
         <div className='leetDoughnut'>
           <h2>Problem Difficulty  <FontAwesomeIcon icon={faPieChart} /></h2>
@@ -242,8 +249,10 @@ function Leetcode() {
           <Line data={lineData} options={lineOptions} />
       </div>
       </div>
+      </AnimatedDiv>
       
       
+      <AnimatedDiv>
       <div className="leetSubmission">
       <h1><FontAwesomeIcon icon={faCode} />  Some of My Recent Submissions</h1>
         <div className="leetSubmissionsContains">
@@ -270,6 +279,7 @@ function Leetcode() {
         )}<br /><br />
         <a href="https://leetcode.com/u/Sandipan_Adhikary/" target='_blank' className='leetcodeBtn'>Visit my leetcode Profile for more Info</a>
       </div>
+      </AnimatedDiv>
     </div>
   );
 }

@@ -9,6 +9,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faHackerrank, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { faCode, faDownload, faHome, faList, faWarning } from '@fortawesome/free-solid-svg-icons';
 import Myresume from '/assets/Sandipan_Resume.pdf'
+import AnimatedDiv from '../AnimatedDiv';
+import Loading from '../Loading';
 
 function Home() {
   const [repos, setRepos] = useState([]);
@@ -16,7 +18,8 @@ function Home() {
   const [error, setError] = useState(null);
   const [siteAvailable, setSiteAvailable] = useState({})
 
-  let username = import.meta.env.VITE_GITHUB_USERNAME;
+  // let username = import.meta.env.VITE_GITHUB_USERNAME;
+  let username = 'Pied07'
 
   useEffect(() => {
     const fetchRepos = async () => {
@@ -75,6 +78,7 @@ function Home() {
   return (
     <>
         <div className="homeContainer">
+            <AnimatedDiv>
             <div className="homeElements">
               <div className="homeLeft">
                 <h1>I am <span>Sandipan Adhikary</span></h1>
@@ -84,7 +88,9 @@ function Home() {
               <div className="homeRight">
                 <img className='myImage' src={sandipan} alt="My Pic" />
               </div>
-            </div><br /><br />
+            </div>
+            </AnimatedDiv><br /><br />
+            <AnimatedDiv>
             <div className="homeHandles">
               <a href="https://github.com/Pied07"><FontAwesomeIcon icon={faGithub} /> My Github Account</a>
               <a href="https://www.linkedin.com/in/sandipan-adhikary-ab418b230/"><FontAwesomeIcon icon={faLinkedin} /> My LinkedIn Account</a>
@@ -92,10 +98,12 @@ function Home() {
               <a href="https://www.hackerrank.com/profile/sandipanadhikar2"><FontAwesomeIcon icon={faHackerrank} /> My HackerRank Account</a>
               <a href={Myresume} download><FontAwesomeIcon icon={faDownload} /> Download my Resume</a>
             </div>
+            </AnimatedDiv>
             <br /><br />
             <div className="homeRecentProjects">
               <h1><FontAwesomeIcon icon={faList} />  My Latest Projects</h1>
               <span><FontAwesomeIcon icon={faWarning} />  <b>**Note :</b> All the Project website might not Open since I have used free tier plan's for Database and hosting on platforms like Vercel or Render So that plan might be Exhausted Kindly Ignore those. <FontAwesomeIcon icon={faWarning} /></span><br /><br />
+                  <AnimatedDiv>
                   <div className="homeCards">
                   {repos.map((repo) => (
                     <div className='homeProjectCardContainer' key={repo.id}>
@@ -118,15 +126,20 @@ function Home() {
                     </div>
                   ))}
                   </div>
+                  </AnimatedDiv>
                   <br /><br />
                     <Link className='projectButton' to="/projects"><FontAwesomeIcon icon={faList} />  See All Projects</Link>
               </div>
+              <AnimatedDiv>
               <div className="homeLeetcodeContainer">
                   <Leetcode />
               </div>
+              </AnimatedDiv>
+              <AnimatedDiv>
               <div className="homeGithubContainer">
                 <Github />
               </div>
+              </AnimatedDiv>
           </div>
     </>
   )

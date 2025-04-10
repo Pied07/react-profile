@@ -5,6 +5,7 @@ import { Pie } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComputer, faPieChart } from '@fortawesome/free-solid-svg-icons';
+import Loading from '../../Loading';
 
 
 const getRandomColor = () => {
@@ -78,7 +79,7 @@ function Github() {
 
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <Loading />
     }
 
     const pieData = {

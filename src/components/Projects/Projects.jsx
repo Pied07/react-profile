@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmarkCircle } from '@fortawesome/free-regular-svg-icons'
-import { faWarning } from '@fortawesome/free-solid-svg-icons'
+import { faWarning, faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 function Projects() {
     const [projects, setProjects] = useState([])
@@ -16,6 +16,7 @@ function Projects() {
         const fetchProjects = async () => {
         try {
             const response = await axios.get(`https://api.github.com/users/${username}/repos`);
+            console.log(`https://api.github.com/users/${username}/repos`)
             const sortedResponse = response.data.sort(
                 (a,b) => new Date(b.pushed_at) - new Date(a.pushed_at)
             )
@@ -66,6 +67,10 @@ function Projects() {
         });
     }, [projects]);
 
+    if(loading) {
+        return <div><FontAwesomeIcon icon={faSpinner} />Loading...</div>;
+    }
+
     const openProjectModal = (project) => {
         setSelectedproject(project)
     }
@@ -104,8 +109,24 @@ function Projects() {
             {selectedProject && (
                 <div className="modal" onClick={closeProjectModal}>
                     <div className="modalContent">
-                        <h2>{selectedProject.name.replace(/[-_]/g, " ")}</h2>
-                        <p>{selectedProject.description}</p>
+                        <h2>Title: {selectedProject.name.replace(/[-_]/g, " ")}</h2>
+                        <p>Description: {selectedProject.description}</p>
+                        <b>Language: {selectedProject.language}</b>
+                        <p>Created At: Date: {new Date(selectedProject.created_at).toLocaleDateString()},  Time: {new Date(selectedProject.created_at).toLocaleTimeString()}</p>
+                        <div className="ProjectcardActions">
+                            <a href={selectedProject.html_url} target="_blank" rel="noopener noreferrer">
+                                Repository
+                            </a>
+                            {siteAvailable[selectedProject.name] && (
+                                <a 
+                                href={siteAvailable[selectedProject.name]} 
+                                target='_blank' 
+                                rel='noopener noreferrer'
+                                >
+                                Website
+                                </a>
+                            )}
+                        </div>
                         <div className="modalActions" onClick={closeProjectModal}><FontAwesomeIcon className='closeIcon' icon={faXmarkCircle} /></div>
                     </div>
                 </div>

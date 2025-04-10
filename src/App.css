@@ -17,6 +17,18 @@
   }
 }
 
+@keyframes LoadingSpinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 @media screen and (max-width: 600px) {
   .navigationBar .navRight .navRightIcon {
     display: block;
@@ -63,6 +75,22 @@
   opacity: 0;
   overflow: hidden;
   z-index: -1;
+}
+
+/* animation on scroll CSS */
+.animated-div {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.5s ease;
+}
+.animated-div.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* loading CSS */
+.loading .loading-icon {
+  animation: LoadingSpinner 1s linear infinite;
 }
 
 /* Navigation Bar CSS */
